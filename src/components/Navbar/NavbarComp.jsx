@@ -7,8 +7,7 @@ import "./Navbar.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 
-export default class NavbarComp extends Component {
-	render() {
+const NavbarComp = () => {
 		return (
 			<div>
 				<Navbar text="white" bg="dark" variant="dark" sticky="top" expand="sm" collapseOnSelect>
@@ -38,4 +37,4 @@ export default class NavbarComp extends Component {
 			</div>
 		);
 	}
-}
+export default NavbarComp

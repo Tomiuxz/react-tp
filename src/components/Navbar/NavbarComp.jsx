@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import logo from '../../logo.svg'
 import { Nav, Navbar, NavbarBrand, NavDropdown, NavLink } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";

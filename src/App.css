@@ -6,6 +6,14 @@
 
 .App {
 	text-align: center;
+	color: white;
+	background: rgb(2, 0, 36);
+	background: linear-gradient(
+		160deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(3, 135, 204, 1) 50%,
+		rgba(2, 0, 36, 1) 100%
+	);
 }
 
 .App-logo {
@@ -29,4 +37,8 @@
 	height: 50px;
 	background-color: #282c34;
 	color: white;
+}
+
+.card-body {
+	background-color: #282c34;
 }

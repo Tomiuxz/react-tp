@@ -10,7 +10,7 @@ const NavbarComp = () => {
 		return (
 			<div>
 				<Navbar text="white" bg="dark" variant="dark" sticky="top" expand="sm" collapseOnSelect>
-					<NavbarBrand> <img src={logo} alt="logo" width="60px" height="40px" /> Gaming Gods </NavbarBrand>
+					<NavbarBrand> <img src={logo} alt="logo" width="80px" height="60px" /> Gaming Gods </NavbarBrand>
 
 					<Navbar.Toggle />
 

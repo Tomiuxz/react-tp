@@ -1,8 +1,14 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 import "./item.css";
 
 const Item = ({ id, name, stock, category, price, img }) => {
+	// function onAdd(cant) {
+	// 	console.log(cant);
+	// }
+
 	return (
 		<div className="container d-flex justify-content-center">
 			<Card className="mb-3 bg-dark w-25">
@@ -16,6 +22,10 @@ const Item = ({ id, name, stock, category, price, img }) => {
 						<h4>Precio: ${price}</h4>
 						<h4>Stock: {stock}</h4>
 					</Card.Text>
+					{/* <ItemCount initial={1} stock={5} onAdd={onAdd} /> */}
+					<Link to={`/detail/${id}`}>
+						<Button variant="primary">Ver más</Button>
+					</Link>
 				</Card.Body>
 			</Card>
 		</div>

@@ -1,4 +1,14 @@
 .cart {
-	margin-right: 1rem;
-  color: beige;
+	margin-right: 2rem;
+}
+
+.header-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 45%;
+}
+
+.header-link{
+  text-decoration: none;
 }

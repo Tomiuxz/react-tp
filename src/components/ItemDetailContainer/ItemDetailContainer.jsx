@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
 
 	return (
 		<div className="container py-4">
-			<ItemDetail product={product}/>
+			<ItemDetail product={product} />
 			<ItemCount initial={1} stock={5} onAdd={onAdd} />
 		</div>
 	);

@@ -11,4 +11,5 @@
 
 .header-link{
   text-decoration: none;
+  color: inherit;
 }

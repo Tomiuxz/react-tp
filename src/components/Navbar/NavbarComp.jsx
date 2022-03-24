@@ -1,10 +1,10 @@
 import logo from "../../logo.svg";
-import { Nav, Navbar, NavbarBrand, NavDropdown } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import CartWidget from "../CartWidget/CartWidget";
-import "./Navbar.css";
-import "bootstrap/dist/css/bootstrap.css";
+import { Nav, Navbar, NavbarBrand, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Navbar.css";
 
 const NavbarComp = () => {
 	return (

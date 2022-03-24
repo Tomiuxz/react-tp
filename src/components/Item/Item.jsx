@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import "./item.css";
 
@@ -24,7 +23,6 @@ const Item = ({ id, name, stock, category, price, img }) => {
 				</Card.Body>
 			</Card>
 		</div>
-		// </div>
 	);
 };
 

@@ -24,15 +24,13 @@ function ItemCounter({ initial, stock, onAdd }) {
 		<div className="container d-flex justify-content-center">
 			<div className="text-center">
 				<div className="card-body">
-					<div className="">
+					<div>
 						<h2 className=""> {contador} </h2>
 						<button className="btn btn-success mx-3" onClick={handleAumentar}>
-							{" "}
-							+{" "}
+							+
 						</button>
 						<button className="btn btn-danger mx-3" onClick={handleRestar}>
-							{" "}
-							-{" "}
+							-
 						</button>
 						<div>
 							<button

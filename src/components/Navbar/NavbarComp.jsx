@@ -2,10 +2,13 @@ import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import CartWidget from "../CartWidget/CartWidget";
 import { Nav, Navbar, NavbarBrand, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../Context/CartContext";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 
 const NavbarComp = () => {
+	const { cantidad } = useCartContext();
+
 	return (
 		<div>
 			<Navbar
@@ -41,7 +44,6 @@ const NavbarComp = () => {
 								Ofertas
 							</NavDropdown.Item>
 						</NavDropdown>
-
 						<Link to="/blog" className="header-link">
 							Blog
 						</Link>
@@ -51,7 +53,10 @@ const NavbarComp = () => {
 						<Link to="/contacto" className="header-link">
 							Contacto
 						</Link>
-						<CartWidget as={Link} to="/cart" className="widget" />
+						<Link to="/cart">
+							<div className="badge">{cantidad() !== 0 && cantidad()}</div>
+							<CartWidget />
+						</Link>
 					</Nav>
 				</NavbarCollapse>
 			</Navbar>

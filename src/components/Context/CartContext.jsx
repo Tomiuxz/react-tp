@@ -13,7 +13,7 @@ function CartContextProvider({ children }) {
 			const cambiarCantidad = [...cartList];
 
 			cambiarCantidad.forEach((x) => {
-				if (x.nombre === item.nombre) {
+				if (x.name === item.name) {
 					x.cantidad += item.cantidad;
 				}
 			});
@@ -26,10 +26,14 @@ function CartContextProvider({ children }) {
 
 	const evitarDuplicados = (parametro) => {
 		const findCartList = cartList.some((i) => {
-			return i.nombre === parametro.nombre;
+			return i.name === parametro.name;
 		});
 		return findCartList;
 	};
+
+  const sumaTotal = () => {
+    return cartList.reduce((acum, prod) =>  acum= acum + (prod.price * prod.cantidad)  ,0)
+}
 
 	const cantidad = () => {
 		return cartList.reduce((acum, prod) => (acum += prod.cantidad), 0);
@@ -49,6 +53,7 @@ function CartContextProvider({ children }) {
 				agregarAlCarrito,
 				borrarItem,
 				cantidad,
+        sumaTotal,
 				vaciarCarrito,
 			}}
 		>

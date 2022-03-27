@@ -17,11 +17,10 @@ const ItemDetail = ({ product }) => {
 		agregarAlCarrito({ ...product, cantidad: cant });
 	}
 
-  console.log(cartList)
+	console.log(cartList);
 
 	return (
 		<div className="d-flex justify-content-center">
-
 			<Card className="mb-3 bg-dark w-25">
 				<Card.Img src={img} alt="product" className="" />
 				<Card.Body>
@@ -40,14 +39,16 @@ const ItemDetail = ({ product }) => {
 					<ItemCount initial={1} stock={5} onAdd={onAdd} />
 				) : (
 					<>
-						<div className="card-body mx-2 btn-group">
+						<div className="card-body mx-2">
+
 							<Link to="/cart">
-								<button className="btn btn-primary p-2 mb-2">
+								<button className="btn btn-primary p-2 m-1">
 									Terminar compra
 								</button>
 							</Link>
+              
 							<Link to="/">
-								<button className="btn btn-success p-2">
+								<button className="btn btn-success p-2 m-1">
 									Seguir comprando
 								</button>
 							</Link>
@@ -55,7 +56,6 @@ const ItemDetail = ({ product }) => {
 					</>
 				)}
 			</div>
-
 		</div>
 	);
 };

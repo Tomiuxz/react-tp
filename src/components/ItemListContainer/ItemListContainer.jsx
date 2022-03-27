@@ -17,7 +17,7 @@ const ItemListContainer = () => {
 	}, [categoria]);
 
 	return (
-		<div className="container py-4">
+		<div className="py-4">
 			<h1>Item List</h1>
 			<ItemList listProducts={listProducts} />
 		</div>

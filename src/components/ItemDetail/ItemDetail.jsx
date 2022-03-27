@@ -2,19 +2,26 @@ import ItemCount from "../ItemCount/ItemCount";
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../Context/CartContext";
 import "../Item/item.css";
 
 const ItemDetail = ({ product }) => {
 	const [contador, setContador] = useState(0);
 
-	const { name, category, stock, price, img } = product;
+	const { cartList, agregarAlCarrito } = useCartContext();
+
+	const { name, category, price, img } = product;
 
 	function onAdd(cant) {
 		setContador(cant);
+		agregarAlCarrito({ ...product, cantidad: cant });
 	}
 
+  console.log(cartList)
+
 	return (
-		<div className="container d-flex justify-content-center">
+		<div className="d-flex justify-content-center">
+
 			<Card className="mb-3 bg-dark w-25">
 				<Card.Img src={img} alt="product" className="" />
 				<Card.Body>
@@ -24,10 +31,10 @@ const ItemDetail = ({ product }) => {
 					<Card.Text>
 						<h4>{category}</h4>
 						<h4>Precio: ${price}</h4>
-						<h4>Stock: {stock}</h4>
 					</Card.Text>
 				</Card.Body>
 			</Card>
+
 			<div>
 				{contador === 0 ? (
 					<ItemCount initial={1} stock={5} onAdd={onAdd} />
@@ -48,6 +55,7 @@ const ItemDetail = ({ product }) => {
 					</>
 				)}
 			</div>
+
 		</div>
 	);
 };

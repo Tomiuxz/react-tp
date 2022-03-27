@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import getProducts from "../../helpers/getProducts";
 import ItemDetail from "../ItemDetail/ItemDetail";
-// import ItemCount from "../ItemCount/ItemCount";
-// import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
 	// const { productId } = useParams();
-	const productId = 2;
+	const productId = 3;
 
 	useEffect(() => {
 		getProducts()
@@ -15,12 +13,10 @@ const ItemDetailContainer = () => {
 			.catch((err) => console.log(err));
 	}, [productId]);
 
-	// function onAdd(cant) {
-	// 	console.log(cant);
-	// }
+  console.log(product);
 
 	return (
-		<div className="container py-4">
+		<div className="py-4">
 			<ItemDetail product={product} />
 		</div>
 	);

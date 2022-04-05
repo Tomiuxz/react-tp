@@ -40,13 +40,12 @@ const ItemDetail = ({ product }) => {
 				) : (
 					<>
 						<div className="card-body mx-2">
-
 							<Link to="/cart">
 								<button className="btn btn-primary p-2 m-1">
 									Terminar compra
 								</button>
 							</Link>
-              
+
 							<Link to="/">
 								<button className="btn btn-success p-2 m-1">
 									Seguir comprando

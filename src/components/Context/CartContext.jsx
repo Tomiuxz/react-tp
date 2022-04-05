@@ -31,9 +31,12 @@ function CartContextProvider({ children }) {
 		return findCartList;
 	};
 
-  const sumaTotal = () => {
-    return cartList.reduce((acum, prod) =>  acum= acum + (prod.price * prod.cantidad)  ,0)
-}
+	const sumaTotal = () => {
+		return cartList.reduce(
+			(acum, prod) => (acum = acum + prod.price * prod.cantidad),
+			0
+		);
+	};
 
 	const cantidad = () => {
 		return cartList.reduce((acum, prod) => (acum += prod.cantidad), 0);
@@ -53,7 +56,7 @@ function CartContextProvider({ children }) {
 				agregarAlCarrito,
 				borrarItem,
 				cantidad,
-        sumaTotal,
+				sumaTotal,
 				vaciarCarrito,
 			}}
 		>

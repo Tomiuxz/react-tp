@@ -2,6 +2,11 @@
 	margin-right: 2rem;
 }
 
+.brand-logo {
+	font-weight: bold;
+	color: lightblue;
+}
+
 .header-nav {
 	display: flex;
 	align-items: center;

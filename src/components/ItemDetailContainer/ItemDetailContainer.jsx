@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from "react";
-import getProducts from "../../helpers/getProducts";
+import { doc, getDocs } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import React, { useState, useEffect } from "react";
+import { db } from "../../utils/firebase";
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
-	// const { productId } = useParams();
-	const productId = 3;
+	const { productId } = useParams();
 
 	useEffect(() => {
-		getProducts()
-			.then((data) => setProduct(data.find((item) => item.id === productId)))
-			.catch((err) => console.log(err));
+		const getData = async () => {
+			const queryDoc = doc(db, "items", productId);
+			const responseDoc = await getDocs(queryDoc);
+			const dataDoc = responseDoc.data();
+			console.log("info-documento-unico", dataDoc);
+			console.log("id-documento-unico", responseDoc.id);
+			const newDocumento = { id: responseDoc.id, ...dataDoc };
+			console.log("newDocumento", newDocumento);
+		};
+		getData();
 	}, [productId]);
-
-  console.log(product);
 
 	return (
 		<div className="py-4">

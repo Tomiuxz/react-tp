@@ -20,7 +20,7 @@ const NavbarComp = () => {
 				collapseOnSelect
 			>
 				<Link to="/" className="header-link">
-					<NavbarBrand className="mx-3">Gaming Gods</NavbarBrand>
+					<NavbarBrand className="mx-3 brand-logo">Gaming Gods</NavbarBrand>
 				</Link>
 
 				<Navbar.Toggle />
@@ -53,6 +53,10 @@ const NavbarComp = () => {
 						<Link to="/contacto" className="header-link">
 							Contacto
 						</Link>
+						<Link to="/firebase" className="header-link">
+							Firebase
+						</Link>
+
 						<Link to="/cart">
 							<div className="badge">{cantidad() !== 0 && cantidad()}</div>
 							<CartWidget />

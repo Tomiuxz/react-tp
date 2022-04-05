@@ -1,25 +1,50 @@
-import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import getProducts from "../../helpers/getProducts";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { db } from "../../utils/firebase";
+import { useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
+import { collection, getDocs } from "firebase/firestore";
 
-const ItemListContainer = () => {
+export const ItemListContainer = () => {
 	const [listProducts, setListProducts] = useState([]);
-	const { categoria } = useParams();
-
 	useEffect(() => {
-		getProducts()
-			.then((data) => {
-				setListProducts(
-					categoria ? data.filter((item) => item.category === categoria) : data);
-			})
-			.catch((err) => console.log(err));
-	}, [categoria]);
+		const getData = async () => {
+			const query = collection(db, "items");
+			const response = await getDocs(query);
+			console.log("respuesta", response);
+			console.log("info-documento", response.docs[0].data());
+			console.log("id-documento", response.docs[0].id);
+
+			const dataItems = response.docs.map((doc) => {
+				return { id: doc.id, ...doc.data() };
+			});
+			console.log("dataItems", dataItems);
+			setListProducts(dataItems);
+		};
+		getData();
+	}, []);
 
 	return (
-		<div className="py-4">
-			<h1>Item List</h1>
-			<ItemList listProducts={listProducts} />
+		<div className="pt-2">
+			{listProducts.map((product) => (
+				<div className="container d-flex justify-content-center">
+					<Card className="mb-3 bg-dark w-25">
+						<Card.Img src={product.img} alt="product" className="" />
+						<Card.Body>
+							<Card.Title>
+								<h1>{product.name}</h1>
+							</Card.Title>
+							<Card.Text>
+								<h4>{product.category}</h4>
+								<h4>Precio: ${product.price}</h4>
+								<h4>Stock: {product.stock}</h4>
+							</Card.Text>
+							<Link to={`/detail/${product.id}`}>
+								<Button variant="primary">Detalles</Button>
+							</Link>
+						</Card.Body>
+					</Card>
+				</div>
+			))}
 		</div>
 	);
 };

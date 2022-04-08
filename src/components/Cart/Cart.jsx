@@ -28,13 +28,15 @@ const Cart = () => {
 
 	const realizarCompra = async (e) => {
 		e.preventDefault();
+
 		let orden = {};
+
 		orden.buyer = dataForm;
 		orden.total = sumaTotal();
 		orden.items = cartList.map((cartItem) => {
-			const id = cartItem.id;
-			const nombre = cartItem.item.nombre;
-			const precio = cartItem.item.precio * cartItem.cantidad;
+			const id = cartItem.item.id;
+			const nombre = cartItem.item.name;
+			const precio = cartItem.item.price * cartItem.cantidad;
 			const cantidad = cartItem.cantidad;
 
 			return {

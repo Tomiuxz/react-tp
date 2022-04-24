@@ -1,4 +1,4 @@
-import { doc, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import React, { useState, useEffect } from "react";
@@ -6,20 +6,25 @@ import { db } from "../../utils/firebase";
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
-	const { productId } = useParams();
+	const [loading, setLoading] = useState(false);
+	const { itemId } = useParams();
 
 	useEffect(() => {
+		setLoading(true);
 		const getData = async () => {
-			const queryDoc = doc(db, "items", productId);
-			const responseDoc = await getDocs(queryDoc);
+			const queryDoc = doc(db, "items", itemId);
+			const responseDoc = await getDoc(queryDoc, "items", itemId);
 			const dataDoc = responseDoc.data();
-			console.log("info-documento-unico", dataDoc);
-			console.log("id-documento-unico", responseDoc.id);
 			const newDocumento = { id: responseDoc.id, ...dataDoc };
-			console.log("newDocumento", newDocumento);
+			setProduct(newDocumento);
+			setLoading(false);
 		};
 		getData();
-	}, [productId]);
+	}, [itemId]);
+
+	if (loading) {
+		return "Cargando!";
+	}
 
 	return (
 		<div className="py-4">

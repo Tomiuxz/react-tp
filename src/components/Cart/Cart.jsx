@@ -34,9 +34,9 @@ const Cart = () => {
 		orden.buyer = dataForm;
 		orden.total = sumaTotal();
 		orden.items = cartList.map((cartItem) => {
-			const id = cartItem.item.id;
-			const nombre = cartItem.item.name;
-			const precio = cartItem.item.price * cartItem.cantidad;
+			const id = cartItem.id;
+			const nombre = cartItem.name;
+			const precio = cartItem.price * cartItem.cantidad;
 			const cantidad = cartItem.cantidad;
 
 			return {
@@ -57,7 +57,7 @@ const Cart = () => {
 			where(
 				documentId(),
 				"in",
-				cartList.map((it) => it.item.id)
+				cartList.map((it) => it.id)
 			)
 		);
 		const batch = writeBatch(db);

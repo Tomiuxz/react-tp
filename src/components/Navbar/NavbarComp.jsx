@@ -53,9 +53,6 @@ const NavbarComp = () => {
 						<Link to="/contacto" className="header-link">
 							Contacto
 						</Link>
-						<Link to="/firebase" className="header-link">
-							Firebase
-						</Link>
 
 						<Link to="/cart">
 							<div className="badge">{cantidad() !== 0 && cantidad()}</div>

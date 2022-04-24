@@ -10,29 +10,29 @@ import { Nosotros } from "./components/Nosotros";
 import { Contacto } from "./components/Contacto";
 import { PageNotFound } from "./components/PageNotFound";
 import { Blog } from "./components/Blog";
+import { UIContextProvider } from "./components/Context/UIContext";
 
 function App() {
 	return (
 		<div className="App">
-			<BrowserRouter>
+			<UIContextProvider>
 				<CartContextProvider>
-					<Navbar />
-					<Routes>
-						<Route path="/" element={<ItemListContainer />} />
-						<Route
-							path="/categoria/:categoria"
-							element={<ItemListContainer />}
-						/>
-						<Route path="/detail/:itemId" element={<ItemDetailContainer />} />
-						<Route path="/nosotros" element={<Nosotros />} />
-						<Route path="/contacto" element={<Contacto />} />
-						<Route path="/blog" element={<Blog />} />
-						<Route path="/cart" element={<Cart />} />
+					<BrowserRouter>
+						<Navbar />
+						<Routes>
+							<Route path="/" element={<ItemListContainer />} />
+							<Route path="/categoria/:cat" element={<ItemListContainer />} />
+							<Route path="/detail/:itemId" element={<ItemDetailContainer />} />
+							<Route path="/nosotros" element={<Nosotros />} />
+							<Route path="/contacto" element={<Contacto />} />
+							<Route path="/blog" element={<Blog />} />
+							<Route path="/cart" element={<Cart />} />
 
-						<Route path="*" element={<PageNotFound />} />
-					</Routes>
+							<Route path="*" element={<PageNotFound />} />
+						</Routes>
+					</BrowserRouter>
 				</CartContextProvider>
-			</BrowserRouter>
+			</UIContextProvider>
 		</div>
 	);
 }

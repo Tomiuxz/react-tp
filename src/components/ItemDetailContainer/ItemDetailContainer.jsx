@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import React, { useState, useEffect } from "react";
 import { db } from "../../utils/firebase";
+import { Spinner } from "react-bootstrap";
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
@@ -23,7 +24,7 @@ const ItemDetailContainer = () => {
 	}, [itemId]);
 
 	if (loading) {
-		return "Cargando!";
+		return <Spinner animation="border" variant="warning" />;
 	}
 
 	return (

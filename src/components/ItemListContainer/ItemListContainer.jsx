@@ -37,9 +37,9 @@ export const ItemListContainer = () => {
 	}, [cat, setLoading]);
 
 	return (
-		<div>
+		<div className="menu">
 			{loading ? (
-				<Spinner animation="border" variant="primary" />
+				<Spinner animation="border" variant="warning" />
 			) : (
 				<div className="pt-2">
 					{listProducts.map((product) => (
